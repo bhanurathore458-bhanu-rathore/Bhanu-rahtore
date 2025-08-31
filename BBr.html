@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhanu Rathore — Personal Website</title>
+  <meta name="description" content="Bhanu Rathore का पोर्टफोलियो — Projects, Skills, About, और Contact details." />
+  <meta name="author" content="Bhanu Rathore" />
+  <meta property="og:title" content="Bhanu Rathore — Portfolio" />
+  <meta property="og:description" content="Projects, Skills, About, Contact" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50' y='58' font-size='54' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'>B</text></svg>">
+  <style>
+    :root{
+      --bg:#0b1220; /* dark */
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --brand:#0ea5e9; /* sky-500 */
+      --brand-2:#22c55e; /* emerald-500 */
+      --ring: rgba(14,165,233,.4);
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+      --radius: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    /* light mode tokens */
+    .light{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --muted:#475569;
+      --text:#0f172a;
+      --shadow: 0 10px 30px rgba(2,8,23,.08);
+      --ring: rgba(14,165,233,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(to bottom, rgba(0,0,0,.4), transparent), var(--bg);backdrop-filter:saturate(140%) blur(6px);z-index:50;border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .brand .logo{width:38px;height:38px;border-radius:12px;background:var(--brand);display:grid;place-items:center;color:white;box-shadow:var(--shadow)}
+    .nav a{padding:10px 12px;border-radius:12px}
+    .nav a:hover{background:rgba(148,163,184,.12)}
+    .nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(148,163,184,.25);background:linear-gradient(to bottom right, rgba(255,255,255,.04), rgba(255,255,255,.02));box-shadow:var(--shadow);color:var(--text)}
+    .btn:hover{transform:translateY(-1px);}
+    .btn.primary{border-color:transparent;background:linear-gradient(135deg, var(--brand), #2563eb);color:white}
+    .btn.ghost{background:transparent;border:1px solid rgba(148,163,184,.35)}
+    .grid{display:grid;gap:24px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width: 900px){.two,.three{grid-template-columns:1fr}}
+
+    /* Hero */
+    .hero{padding:48px 24px 24px}
+    .hero-card{display:grid;grid-template-columns: 1fr 1fr;gap:24px;align-items:center;background:radial-gradient(1200px 500px at -10% -50%, rgba(14,165,233,.15), transparent 50%), radial-gradient(800px 400px at 120% 120%, rgba(34,197,94,.15), transparent 50%), var(--card);border:1px solid rgba(148,163,184,.15);border-radius:calc(var(--radius) + 6px);padding:28px;box-shadow:var(--shadow)}
+    .hero h1{font-size:clamp(28px, 4.6vw, 48px);line-height:1.15;margin:0 0 8px 0}
+    .hero p{color:var(--muted);margin:0 0 16px 0}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.25);color:#7dd3fc;font-weight:600}
+    .avatar{width:220px;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid rgba(148,163,184,.2);box-shadow:var(--shadow);margin-inline:auto;background:linear-gradient(180deg, rgba(148,163,184,.15), transparent)}
+
+    /* Sections */
+    section{padding:28px 0}
+    .section-card{background:var(--card);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .section-title{display:flex;align-items:center;gap:10px;margin:0 0 12px 0}
+    .muted{color:var(--muted)}
+
+    /* Skills */
+    .skill-badges{display:flex;flex-wrap:wrap;gap:10px}
+    .badge{padding:8px 12px;border:1px solid rgba(148,163,184,.3);border-radius:12px;background:linear-gradient(to bottom, rgba(255,255,255,.04), rgba(255,255,255,.02))}
+    .meter{height:10px;background:rgba(148,163,184,.25);border-radius:999px;position:relative;overflow:hidden}
+    .meter>span{position:absolute;inset:0;height:100%;background:linear-gradient(90deg, var(--brand), #22c55e);border-radius:999px}
+
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{border:1px solid rgba(148,163,184,.15);background:linear-gradient(to bottom right, rgba(255,255,255,.04), rgba(255,255,255,.02));border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+    .card h3{margin:0}
+    .card footer{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:2px;background:rgba(148,163,184,.25)}
+    .t-item{position:relative;margin-bottom:14px}
+    .t-item:before{content:"";position:absolute;left:-2px;top:6px;width:10px;height:10px;background:var(--brand);border-radius:999px;box-shadow:0 0 0 4px rgba(14,165,233,.25)}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(148,163,184,.35);background:transparent;color:var(--text);outline:none}
+    input:focus,textarea:focus{box-shadow:0 0 0 6px var(--ring);border-color:var(--brand)}
+
+    /* Utilities */
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .right{justify-content:flex-end}
+    .center{justify-content:center}
+    .hide{display:none}
+    .sticky-cta{position:fixed;right:18px;bottom:18px;z-index:60}
+    .to-top{position:fixed;left:18px;bottom:18px;z-index:60}
+    .small{font-size:.92rem}
+    footer{padding:28px 24px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- शीर्ष नेविगेशन -->
+  <header>
+    <nav class="nav container">
+      <div class="brand">
+        <div class="logo">B</div>
+        <span>Bhanu Rathore</span>
+      </div>
+      <div class="nav-right">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <button id="themeBtn" class="btn ghost" aria-label="Toggle Theme">🌗 Theme</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main id="home" class="hero container">
+    <div class="hero-card">
+      <div>
+        <span class="chip">नमस्ते! मैं हूँ</span>
+        <h1>Bhanu Rathore</h1>
+        <p class="muted">Front-end Developer | Learner | Tech Enthusiast</p>
+        <div class="row">
+          <a class="btn primary" href="resume.pdf" download>⬇️ Download Resume</a>
+          <a class="btn" href="https://wa.me/91XXXXXXXXXX?text=Hi%20Bhanu%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noreferrer">💬 WhatsApp</a>
+          <a class="btn" href="#contact">✉️ Contact</a>
+        </div>
+      </div>
+      <div class="center">
+        <!-- Avatar Placeholder (इसे अपनी फोटो से बदलें) -->
+        <div class="avatar" aria-label="Profile Photo Placeholder">
+          <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0ea5e9"/>
+                <stop offset="100%" stop-color="#22c55e"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="200" height="200" rx="24" fill="url(#g)"/>
+            <circle cx="100" cy="80" r="36" fill="rgba(255,255,255,.92)"/>
+            <rect x="46" y="132" width="108" height="44" rx="20" fill="rgba(255,255,255,.92)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- About Section -->
+  <section id="about" class="container">
+    <div class="section-card">
+      <h2 class="section-title">ℹ️ About</h2>
+      <p>मैं Bhanu Rathore हूँ — एक self‑taught डेवलपर जो clean UI और तेज़ websites बनाना पसंद करता है। नीचे मेरे skills, projects और contact details दिए हैं।</p>
+      <div class="grid two">
+        <div>
+          <h3>Highlights</h3>
+          <ul>
+            <li>⚡ Responsive websites (Mobile First)</li>
+            <li>🎯 Focus: HTML, CSS, JavaScript</li>
+            <li>🛠️ Tools: VS Code/Acode, Git basics</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Basic Info</h3>
+          <ul>
+            <li>📍 Location: India</li>
+            <li>📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a></li>
+            <li>📱 Phone: <a href="tel:+91XXXXXXXXXX">+91-XXXXXXXXXX</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="container">
+    <div class="section-card">
+      <h2 class="section-title">🧰 Skills</h2>
+      <div class="grid two">
+        <div>
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <strong>HTML</strong><span class="muted">Advanced</span>
+          </div>
+          <div class="meter" aria-label="HTML level"><span style="width: 90%"></span></div>
+        </div>
+        <div>
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <strong>CSS</strong><span class="muted">Advanced</span>
+          </div>
+          <div class="meter"><span style="width: 85%"></span></div>
+        </div>
+        <div>
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <strong>JavaScript</strong><span class="muted">Intermediate</span>
+          </div>
+          <div class="meter"><span style="width: 70%"></span></div>
+        </div>
+        <div>
+          <div class="row" style="align-items:center;justify-content:space-between">
+            <strong>MS Office / Excel</strong><span class="muted">Intermediate</span>
+          </div>
+          <div class="meter"><span style="width: 65%"></span></div>
+        </div>
+      </div>
+      <div class="skill-badges" style="margin-top:10px">
+        <span class="badge">Responsive Design</span>
+        <span class="badge">Git & GitHub</span>
+        <span class="badge">SEO Basics</span>
+        <span class="badge">Canva</span>
+        <span class="badge">PowerPoint</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="container">
+    <div class="section-card">
+      <h2 class="section-title">📦 Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Portfolio Website</h3>
+          <p class="muted">Personal brand के लिए modern, responsive साइट।</p>
+          <footer>
+            <a class="btn" href="#" onclick="alert('Demo link set karein!')">Live Demo</a>
+            <a class="btn ghost" href="#" onclick="alert('GitHub link set karein!')">Source Code</a>
+          </footer>
+        </article>
+        <article class="card">
+          <h3>HTML Components Kit</h3>
+          <p class="muted">Buttons, cards, forms जैसे ready‑to‑use UI blocks.</p>
+          <footer>
+            <a class="btn" href="#" onclick="alert('Demo link set karein!')">Preview</a>
+          </footer>
+        </article>
+        <article class="card">
+          <h3>Excel Automation (Macros)</h3>
+          <p class="muted">Daily reports aur formatting ke लिए simple tools.</p>
+          <footer>
+            <a class="btn" href="#" onclick="alert('Details add karein!')">Details</a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="container">
+    <div class="section-card">
+      <h2 class="section-title">🖼️ Gallery</h2>
+      <div class="cards">
+        <figure class="card">
+          <img alt="Sample work" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230ea5e9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EYour Image 1%3C/text%3E%3C/svg%3E" />
+          <figcaption class="small muted">Project Screenshot 1</figcaption>
+        </figure>
+        <figure class="card">
+          <img alt="Sample work" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='360'%3E%3Crect width='100%25' height='100%25' fill='%2322c55e'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EYour Image 2%3C/text%3E%3C/svg%3E" />
+          <figcaption class="small muted">Project Screenshot 2</figcaption>
+        </figure>
+        <figure class="card">
+          <img alt="Sample work" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='360'%3E%3Crect width='100%25' height='100%25' fill='%231f2937'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EYour Image 3%3C/text%3E%3C/svg%3E" />
+          <figcaption class="small muted">Project Screenshot 3</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="container">
+    <div class="section-card">
+      <h2 class="section-title">🗓️ Timeline</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <h4>2025 — Present • Front‑end Learning</h4>
+          <p class="muted">HTML/CSS/JS projects, UI practice.</p>
+        </div>
+        <div class="t-item">
+          <h4>2023 — 2024 • MS Office & Excel</h4>
+          <p class="muted">Excel formatting, basic automation, reports.</p>
+        </div>
+        <div class="t-item">
+          <h4>2022 — Education</h4>
+          <p class="muted">Relevant coursework and certificates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container">
+    <div class="section-card">
+      <h2 class="section-title">📨 Contact</h2>
+      <p class="muted">Form submit करने पर आपका default email app खुलेगा (backend की ज़रूरत नहीं)।</p>
+      <form id="contactForm">
+        <div class="grid two">
+          <div>
+            <label for="name">नाम</label>
+            <input id="name" name="name" type="text" placeholder="अपना नाम" required />
+          </div>
+          <div>
+            <label for="email">ईमेल</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div>
+          <label for="msg">संदेश</label>
+          <textarea id="msg" name="message" rows="4" placeholder="अपना संदेश लिखें" required></textarea>
+        </div>
+        <div class="row right">
+          <button class="btn primary" type="submit">Send ✉️</button>
+          <a class="btn" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Floating Buttons -->
+  <div class="sticky-cta">
+    <a class="btn primary" href="#contact">Hire Me 🚀</a>
+  </div>
+  <div class="to-top">
+    <a class="btn ghost" href="#home">↑ Top</a>
+  </div>
+
+  <footer class="container center">
+    <small>© <span id="year"></span> Bhanu Rathore. All rights reserved.</small>
+  </footer>
+
+  <script>
+    // ===== Theme Toggle (Dark/Light) =====
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light'){ root.classList.add('light'); }
+    themeBtn.addEventListener('click', ()=>{
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // ===== Smooth Scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // ===== Contact: mailto handler (no backend) =====
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      if(!name || !email || !msg){ alert('Please fill all fields.'); return; }
+      const subject = encodeURIComponent('Portfolio Contact — ' + name);
+      const body = encodeURIComponent(`From: ${name} <${email}>\n\n${msg}`);
+      window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+      form.reset();
+    });
+
+    // ===== Dynamic Year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+  🔧 Customize Guide (Hindi):
+  1) "Bhanu Rathore" को अपने नाम से बदलें (header, hero, footer में)।
+  2) WhatsApp लिंक में अपना नंबर डालें: 91XXXXXXXXXX.
+  3) Email बदलें: youremail@example.com.
+  4) Resume के लिए resume.pdf फाइल इसी फोल्डर में रखें।
+  5) Avatar div के अंदर अपनी फोटो का <img src="photo.jpg"> लगाएँ (220px square best)।
+  6) Projects के buttons पर अपने links लगाएँ।
+  7) Sections को घटाएँ/बढ़ाएँ — सब एक ही फाइल में है।
+  8) Offline भी काम करेगा; कोई external library नहीं है।
+  -->
+</body>
+</html>
+
+
+{"updates":[{"pattern":".","multiple":false,"replacement":"<!DOCTYPE html>\n<html lang="hi">\n<head>\n  <meta charset="UTF-8" />\n  <meta name="viewport" content="width=device-width, initial-scale=1" />\n  <title>Bhanu Rathore — Personal Website</title>\n  <meta name="description" content="Bhanu Rathore का पोर्टफोलियो — Projects, Skills, About, और Contact details." />\n  <meta name="author" content="Bhanu Rathore" />\n  <meta property="og:title" content="Bhanu Rathore — Portfolio" />\n  <meta property="og:description" content="Projects, Skills, About, Contact" />\n  <meta property="og:type" content="website" />\n  <meta name="theme-color" content="#0ea5e9" />\n  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230ea5e9'/><text x='50' y='58' font-size='54' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'>B</text></svg>">\n  <style>\n    / (same CSS as before, unchanged) */\n  </style>\n</head>\n<body>\n  <!-- शीर्ष नेविगेशन -->\n  <header>\n    <nav class="nav container">\n      <div class="brand">\n        <div class="logo">B</div>\n        <span>Bhanu Rathore</span>\n      </div>\n      <div class="nav-right">\n        <a href="#home">Home</a>\n        <a href="#about">About</a>\n        <a href="#skills">Skills</a>\n        <a href="#projects">Projects</a>\n        <a href="#gallery">Gallery</a>\n        <a href="#contact">Contact</a>\n        <button id="themeBtn" class="btn ghost" aria-label="Toggle Theme">🌗 Theme</button>\n      </div>\n    </nav>\n  </header>\n\n  <!-- Hero Section -->\n  <main id="home" class="hero container">\n    <div class="hero-card">\n      <div>\n        <span class="chip">नमस्ते! मैं हूँ</span>\n        <h1>Bhanu Rathore</h1>\n        <p class="muted">Front-end Developer | Learner | Tech Enthusiast</p>\n        <div class="row">\n          <a class="btn primary" href="resume.pdf" download>⬇️ Download Resume</a>\n          <a class="btn" href="https://wa.me/91XXXXXXXXXX?text=Hi%20Bhanu%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noreferrer">💬 WhatsApp</a>\n          <a class="btn" href="#contact">✉️ Contact</a>\n        </div>\n      </div>\
+
